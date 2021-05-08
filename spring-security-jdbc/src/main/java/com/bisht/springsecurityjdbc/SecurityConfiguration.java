@@ -24,15 +24,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // as we have H2 embedded database spring will automatically create the datasource for H2.
 
         auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .withDefaultSchema()
-                .withUser(User.withUsername("user").password("user").roles("USER"))
-                .withUser(User.withUsername("admin").password("admin").roles("ADMIN"));
+                .dataSource(dataSource);
 
         /*
         In the above statement H2 has actually a default schema to make for the security name and passwords table.
         We can have a different schema for the table of our choice also.So we have just use the default schema
         and had made the users and passwords. So at run time the spring will add the record to this embedded database.
+
+        The Default Schema can be found at - https://docs.spring.io/spring-security/site/docs/current/reference/html5/#user-schema
         */
     }
 
